@@ -1,11 +1,10 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-
+from django.test import LiveServerTestCase
 import time
-import unittest
 
-class NewVisitorTest(unittest.TestCase):
+class NewVisitorTest(LiveServerTestCase):
 
 	def setUp(self):
 		self.browser = webdriver.Chrome()
@@ -22,7 +21,7 @@ class NewVisitorTest(unittest.TestCase):
 
 		# 张三听说有一个在线代办事项的应用
 		# 他去看了这个应用的首页
-		self.browser.get('http://localhost:8000')
+		self.browser.get(self.live_server_url)
 
 		# 他注意到网页里包含“TO-DO”这个词
 		self.assertIn('To-Do', self.browser.title)
@@ -56,7 +55,3 @@ class NewVisitorTest(unittest.TestCase):
 
 		# 他访问那个URL，发现他的待办事项列表还在
 		# 他满意的离开了
-
-
-if __name__ == '__main__':
-	unittest.main()
