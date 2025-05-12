@@ -1,13 +1,6 @@
 {% extends 'base.html' %}
 
-{% block header_text %}Start a new list{% endblock %}
+{% block header_text %}Start a new To-Do list{% endblock %}
 
 {% block form_action %}/lists/new{% endblock %}
 
-{% block table %}
-    <table id="id_list_table">
-        {% for item in list.item_set.all %}
-            <tr><td>{{ forloop.counter }}: {{ item.text }}</td></tr>
-        {% endfor %}
-    </table>
-{% endblock %}
