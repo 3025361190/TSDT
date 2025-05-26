@@ -53,9 +53,10 @@ def _update_static_files(source_folder):
     )
 
 def _update_database(source_folder):
+    db_path = f'{source_folder}/db.sqlite3'
+    run(f'sqlite3 {db_path} "DROP TABLE IF EXISTS lists_list;"')
     run(
-        f'cd {source_folder}'
-        ' && ../virtualenv/bin/python manage.py migrate --noinput'
+        f'cd {source_folder} && ../virtualenv/bin/python manage.py migrate --noinput'
     )
 
 if __name__ == '__main__':
